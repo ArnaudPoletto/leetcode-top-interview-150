@@ -12,15 +12,16 @@ class Solution(object):
 
         nums_len = len(nums)
         while curr < nums_len:
-            if memory[0] != memory[1] or memory[1] != memory[2]:
-                nums[set_idx] = nums[curr]
-                set_idx += 1
             # Shift memory
             memory[0:2] = memory[1:3]
             memory[2] = nums[curr]
+
+            if memory[0] != memory[1] or memory[1] != memory[2]:
+                nums[set_idx] = nums[curr]
+                set_idx += 1
+                
             # Go through the entire list
             curr += 1
-            print(memory, nums)
 
         return set_idx
 
